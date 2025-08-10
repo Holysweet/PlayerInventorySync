@@ -1,21 +1,31 @@
-# Player Inventory Sync
+# PlayerInventorySync 🔄
 
-*You know that moment when you place a block, it vanishes, and you have to open a chest just to get it back? This mod makes that a thing of the past.*
+You know that moment where you place a block, it vanishes,  
+and you have to walk over to a chest to *find where it went*? 😤  
+Or when you scoop a bucket of lava and suddenly… nope, bucket’s empty?  
 
-## What This Mod Does
-Player Inventory Sync fixes common client/server inventory desync issues by automatically resyncing your inventory only when necessary.  
-No extra features, no nonsense — just a clean, surgical fix.
+**PlayerInventorySync** fixes those annoying inventory desyncs by instantly snapping your inventory back in sync when Minecraft gets confused.
 
-### Prevents:
-- Blocks disappearing after placement in protected or cancelled areas.
-- Items not returning to inventory when use is denied.
-- Buckets pulling from the wrong source (e.g., from a tank instead of the intended fluid block).
-- Needing to open a container to force inventory updates.
+---
 
-## Compatibility
-- Works in singleplayer and multiplayer.
-- Designed to be lightweight and conflict-free.
-- No gameplay changes — purely a desync prevention fix.
+## 🚫 Prevents:
+- Placing blocks that vanish into thin air 🪄✨  
+- Buckets scooping from the wrong source (or not at all) 🪣🔥  
+- Items teleporting to random slots or containers 📦  
+- Having to open a chest just to fix your hotbar 🙄  
 
-## License
-This project is licensed under the MIT License.
+---
+
+## 📦 Installation
+- Works on both **servers** and **singleplayer**.  
+- Just drop into your `mods` folder and play.  
+
+---
+
+✅ **Clean. Single-purpose. No nonsense.**  
+
+---
+
+## 📜 License & Credits
+- Licensed under the **MIT License**
+- Created by **Holysweet**. Please mention me if you share, showcase, or include this mod in a pack.  
