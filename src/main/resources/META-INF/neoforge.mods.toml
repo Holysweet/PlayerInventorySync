@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[2,)"
+license="MIT"
+
+[[mods]]
+modId="playerinventorysync"
+version="1.0.0"
+displayName="Player Inventory Sync"
+authors="Holysweet"
+description='''
+Fixes the "ghost item" desync: when clicks/placements are rejected or canceled, the server immediately resynchronizes your carried item and container slots.
+'''
+
+# NeoForge 21.x (MC 1.21.x)
+[[dependencies.playerinventorysync]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,22)"
+ordering="NONE"
+side="BOTH"
+
+# Minecraft 1.21.x
+[[dependencies.playerinventorysync]]
+modId="minecraft"
+type="required"
+versionRange="[1.21,1.22)"
+ordering="NONE"
+side="BOTH"

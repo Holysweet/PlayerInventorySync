@@ -1,0 +1,64 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'net.neoforged.moddev'  // version is set in settings.gradle
+}
+
+group = project.findProperty('grp')
+version = project.findProperty('version')
+
+base {
+    archivesName.set(project.findProperty('modid') as String)  // single JAR name
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    // withSourcesJar()  // OMITTED → prevents the -sources.jar (you'll get only one jar)
+}
+
+neoForge {
+    version = project.findProperty('neo_version')
+
+    runs {
+        client {
+            client()
+            gameDirectory = file('run/client')
+        }
+        server {
+            server()
+            gameDirectory = file('run/server')
+        }
+    }
+
+    // NOTE: removed the mods { ... } block entirely.
+    // For a single-mod project, moddev uses the main source set by default.
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // none
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'modid', project.findProperty('modid')
+    inputs.property 'mod_name', project.findProperty('mod_name')
+    // TOML is hardcoded; no expansion needed
+}
+
+jar {
+    manifest {
+        attributes([
+                'Specification-Title'   : project.findProperty('mod_name'),
+                'Specification-Version' : project.version,
+                'Implementation-Title'  : project.findProperty('mod_name'),
+                'Implementation-Version': project.version
+        ])
+    }
+}
