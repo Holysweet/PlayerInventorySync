@@ -4,7 +4,7 @@ license="MIT"
 
 [[mods]]
 modId="playerinventorysync"
-version="1.0.0"
+version="1.0.1"
 displayName="Player Inventory Sync"
 authors="Holysweet"
 description='''
@@ -15,7 +15,7 @@ Fixes the "ghost item" desync: when clicks/placements are rejected or canceled, 
 [[dependencies.playerinventorysync]]
 modId="neoforge"
 type="required"
-versionRange="[21.1,22)"
+versionRange="[21.1.0,)"
 ordering="NONE"
 side="BOTH"
 
@@ -23,6 +23,6 @@ side="BOTH"
 [[dependencies.playerinventorysync]]
 modId="minecraft"
 type="required"
-versionRange="[1.21,1.22)"
+versionRange="[1.21.1,)"
 ordering="NONE"
 side="BOTH"

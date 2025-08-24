@@ -1,21 +1,14 @@
 package com.holysweet.playerinventorysync;
 
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 
-@Mod(PlayerInventorySync.MOD_ID)
-public class PlayerInventorySync {
-    public static final String MOD_ID = "playerinventorysync";
+@Mod(PlayerInventorySync.MODID)
+public final class PlayerInventorySync {
+    public static final String MODID = "playerinventorysync";
 
-    public PlayerInventorySync(IEventBus modBus) {
-        modBus.addListener(this::commonSetup);
-        Config.init(); // no path needed
+    public PlayerInventorySync() {
+        // Instance registration because ServerResyncs keeps per-tick/per-player state in fields
         NeoForge.EVENT_BUS.register(new ServerResyncs());
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        // No-op
     }
 }

@@ -13,7 +13,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import java.util.UUID;
 
 /**
- * Server-side only: immediately resends authoritative container + carried stacks
+ * Server-side only: resends authoritative container + carried stacks
  * when interactions FAIL (canceled), plus a tiny watchdog follow-up.
  * Clean & surgical: no resync on successful actions.
  */
@@ -27,7 +27,7 @@ final class ServerResyncs {
         int count = resyncsThisTick.getOrDefault(sp.getUUID(), 0);
         if (count >= Config.MAX_RESYNCS_PER_TICK.get()) return;
 
-        AbstractContainerMenu menu = sp.containerMenu; // always non-null (player inv if none open)
+        AbstractContainerMenu menu = sp.containerMenu; // never null: defaults to player inv
         int stateId = menu.incrementStateId();
         sp.connection.send(new ClientboundContainerSetContentPacket(
                 menu.containerId,
@@ -50,9 +50,12 @@ final class ServerResyncs {
     @SubscribeEvent
     public void onPlayerTick(PlayerTickEvent.Post evt) {
         if (!(evt.getEntity() instanceof ServerPlayer sp)) return;
+
+        // per-tick rate limit reset
         UUID id = sp.getUUID();
         resyncsThisTick.removeInt(id);
 
+        // watchdog follow-up after a canceled interaction
         int now = sp.server.getTickCount();
         int until = suspectUntilTick.getOrDefault(id, -1);
         if (until >= 0 && now >= until) {
